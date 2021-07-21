@@ -1,6 +1,8 @@
 const ALERT_SHOW_TIME = 15000;
-const ERROR_MESSAGE = (error) => {`Произошла ошибка ${error} при подключении к сервису.
-Просьба обратится в службу поддержки или перезаргузить страницу через пару минут.`;};
+const ERROR_MESSAGE = (error) => {
+  const text = `Произошла ошибка ${error} при подключении к сервису. Просьба обратится в службу поддержки или перезаргузить страницу через пару минут.`;
+  return text;
+};
 
 // eslint-disable-next-line arrow-body-style
 const isEscEvent = (evt) => {
@@ -31,9 +33,9 @@ const showError = (codErrorInfo) => {
 };
 
 const bodyHTML = document.querySelector('body');
-const errorTemplate = bodyHTML.querySelector('#error').content('.error').cloneNode(true);
+const errorTemplate = bodyHTML.querySelector('#error').content.querySelector('.error').cloneNode(true);
 const buttonError = errorTemplate.querySelector('.error__button');
-const successTemplate = bodyHTML.querySelector('#success').content('.success').cloneNode(true);
+const successTemplate = bodyHTML.querySelector('#success').content.querySelector('.success').cloneNode(true);
 const buttonSuccess = successTemplate.querySelector('.success__button');
 
 const openPopupError = () => {bodyHTML.insertAdjacentElement (beforeend, errorTemplate);};

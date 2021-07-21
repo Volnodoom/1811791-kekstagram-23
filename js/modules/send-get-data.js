@@ -1,27 +1,26 @@
-import { showError } from './get-data-error';
+import { showError } from './error-success-messages.js';
 
+const URL_TO_SEND = 'https://23.javascript.pages.academy/kekstagram';
 
-const getData = async () => {
+const getData = async (url) => {
   let response;
 
   try {
-    response = await fetch ('https://23.javascript.pages.academy/kekstagram/data');
+    response = await fetch (url);
     if (!response.ok) {
       throw new Error (`${response.status} -- ${response.statusText}`);
     }
-  } catch (err) {
-    showError(err);
-  }
+  } catch (err) {return showError(err);}
 
-  const posts = await response.json();
-  return posts;
+  return await response.json();
 };
 
 const sendData = async (onSuccess, onError, body) => {
   let response;
 
   try {
-    response = await fetch ('https://23.javascript.pages.academy/kekstagram',
+    response = await fetch (
+      URL_TO_SEND,
       {
         method:'POST',
         body,

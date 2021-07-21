@@ -1,4 +1,7 @@
-const getData = async (showError) => {
+import { showError } from './get-data-error';
+
+
+const getData = async () => {
   let response;
 
   try {
@@ -7,14 +10,14 @@ const getData = async (showError) => {
       throw new Error (`${response.status} -- ${response.statusText}`);
     }
   } catch (err) {
-    showError();
+    showError(err);
   }
 
   const posts = await response.json();
   return posts;
 };
 
-const sendData = async (showPopupSuccess, showPopupError, body) => {
+const sendData = async (onSuccess, onError, body) => {
   let response;
 
   try {
@@ -28,10 +31,10 @@ const sendData = async (showPopupSuccess, showPopupError, body) => {
       throw new Error (`${response.statusText} -- ${response.statusText}`);
     }
   } catch (err) {
-    showPopupError ();
+    onError ();
   }
 
-  return showPopupSuccess ();
+  return onSuccess ();
 };
 
 export {getData, sendData};

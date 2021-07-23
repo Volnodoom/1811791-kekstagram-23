@@ -5,23 +5,25 @@ const URL_FOR_DATA = 'https://23.javascript.pages.academy/kekstagram/data';
 
 
 const boxWithThumbnails = document.querySelector('.pictures');
-const referencePic = document.querySelector('#picture').content.querySelector('.picture');
+
 
 const creatThumbnails = (datum) => {
-  const picElement = referencePic.cloneNode(true);
+  const {url,likes,comments} = datum;
+  const referencePic = document.querySelector('#picture').content.querySelector('.picture');
 
   const urlPic = referencePic.querySelector('img');
-  urlPic.setAttribute ('src', datum.url);
+  urlPic.setAttribute ('src', url);
 
   const likesPic = referencePic.querySelector('.picture__likes');
-  likesPic.textContent = datum.likes;
+  likesPic.textContent = likes;
 
   const commentsPic = referencePic.querySelector('.picture__comments');
-  commentsPic.textContent = datum.comments;
+  commentsPic.textContent = comments;
 
+  const picElement = referencePic.cloneNode(true);
   return boxWithThumbnails.appendChild(picElement);
 };
 
-const tempData = getData(URL_FOR_DATA).then((data) => data.slice(1, 20).forEach((datum) => creatThumbnails (datum)));
-console.log (tempData);
+getData(URL_FOR_DATA).then((data) => data.slice(0, 19).forEach((datum) => creatThumbnails (datum)));
+
 

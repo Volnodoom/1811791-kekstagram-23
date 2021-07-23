@@ -3,7 +3,8 @@ import './modules/error-success-messages.js';
 import './modules/thumbnails.js';
 import './modules/fullscreen-pic.js';
 import './utils/buttons-key-functionality.js';
-
+//import './modules/correction-uploaded-photo.js';
+console.log ('IAM HERER')
 // const URL_FOR_DATA = 'https://23.javascript.pages.academy/kekstagram/data';
 
 // getData(URL_FOR_DATA).then((data) => data.slice(0, 1));

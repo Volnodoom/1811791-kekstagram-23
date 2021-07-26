@@ -4,6 +4,8 @@ const fullViewCloseButton = fullView.querySelector('#picture-cancel');
 const correctImage = bodyTag.querySelector('.img-upload__overlay');
 const uploadFile = bodyTag.querySelector('#upload-file');
 const correctionCloseButton = bodyTag.querySelector('#upload-cancel');
+const hashtagInput = bodyTag.querySelector('.text__hashtags');
+const textInput = bodyTag.querySelector('.text__description');
 
 // eslint-disable-next-line arrow-body-style
 const isEscEvent = (evt) => {
@@ -33,6 +35,7 @@ const closeFullView = () => {
 openFullView();
 
 //<---- functionality for correction uploaded photo ----->
+
 // Delete after completing this module ----->
 bodyTag.classList.remove('modal-open');
 fullView.classList.add('hidden');
@@ -48,14 +51,21 @@ uploadFile.addEventListener('change', () => {
 // eslint-disable-next-line no-use-before-define
 const onClickCorrection = () => closeCorrection();
 
-// eslint-disable-next-line no-use-before-define
-const onEscCorrection = (evt) => {if (isEscEvent(evt)) {closeCorrection();}};
+const onEscCorrection = (evt) => {if (isEscEvent(evt)) {
+  if (evt.target.matches('.text__hashtags') || evt.target.matches('.text__description')) {
+    evt.stopPropagation();
+  // eslint-disable-next-line no-use-before-define
+  } else {closeCorrection();}
+}};
 
 const closeCorrection = () => {
   bodyTag.classList.remove('modal-open');
   correctImage.classList.add('hidden');
   correctionCloseButton.removeEventListener('click', onClickCorrection);
   document.removeEventListener('keydown', onEscCorrection);
+  uploadFile.value = '';
+  hashtagInput.value = '';
+  textInput.value = '';
 };
 
 const openCorrection = () => {

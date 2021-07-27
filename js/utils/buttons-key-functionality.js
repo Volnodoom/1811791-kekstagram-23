@@ -16,7 +16,6 @@ const isEscEvent = (evt) => {
 
 // eslint-disable-next-line no-use-before-define
 const onClickFullView = () => closeFullView();
-
 // eslint-disable-next-line no-use-before-define
 const onEscFullView = (evt) => {if (isEscEvent(evt)) {closeFullView();}};
 
@@ -37,8 +36,8 @@ openFullView();
 //<---- functionality for correction uploaded photo ----->
 
 // Delete after completing this module ----->
-bodyTag.classList.remove('modal-open');
-fullView.classList.add('hidden');
+// bodyTag.classList.remove('modal-open');
+// fullView.classList.add('hidden');
 // Delete after completing this module <-----
 
 uploadFile.addEventListener('change', () => {

@@ -14,9 +14,9 @@ const fullViewMessageForAudience = fullViewSection.querySelector('.social__capti
 const lineXofYComments = fullViewSection.querySelector('.social__comment-count');
 const loadComments = fullViewSection.querySelector('.comments-loader');
 
-fullViewSection.classList.remove('hidden');
+// fullViewSection.classList.remove('hidden');
 fullViewComments.innerHTML = '';
-document.body.classList.add('modal-open');
+// document.body.classList.add('modal-open');
 
 const isCommentsBoxEmpty = () => {
   lineXofYComments.hidden = true;
